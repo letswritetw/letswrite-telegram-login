@@ -21,7 +21,7 @@
     <meta property="og:image:height" content="630"/>
     <meta property="og:image:alt" content="文章標題"/>
     <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"/>
     <link rel="stylesheet" href="dist/style.min.css"/>
     <!-- Google Tag Manager-->
     <script>
@@ -38,13 +38,34 @@
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
     <div class="container">
-      <p>Callback</p>
-      <p>Redirect to URL</p>
-      <script async="" src="https://telegram.org/js/telegram-widget.js?14" data-telegram-login="lw_logindemo_bot" data-size="large" data-radius="20" data-auth-url="https://script.google.com/macros/s/AKfycbzgFHWEpsh-NOujcaH1G1lIAKi4RgnZZrRZgJSOJHUX9oRqVwV4G9DA/exec" data-request-access="write"></script>
+      <h1 class="text-center">Telegram Login Widget</h1>
+      <hr/>
+      <div class="text-center">
+        <p>筆記文：<a href="https://letswrite.tw/telegram-login/">Let's Write</a></p>
+      </div>
+      <h2>1. Callback</h2>
+      <div class="mb-4"></div>
+      <script async="" src="https://telegram.org/js/telegram-widget.js?14" data-telegram-login="lw_logindemo_bot" data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
+      <div class="mb-4"></div>
+      <pre><code id="code">登入後取得的資料會顯示在這</code></pre>
+      <hr/>
+      <h2>2. Redirect to URL</h2>
+      <h3>HTML</h3>
+      <p>生成器網址：<a href="https://core.telegram.org/widgets/login#widget-configuration" target="_blank" ref="noopener noreferrer">Widget configuration</a></p>
+      <pre><code>&lt;!-- 在要產生登入按鈕的地方貼上以下 -->
+&lt;script async src="https://telegram.org/js/telegram-widget.js?14"
+        data-telegram-login="Telegram 機器人的「使用者名稱」"
+        data-size="large"
+        data-auth-url="要轉去哪個 URL 做後端處理"
+        data-request-access="write">&lt;/script></code></pre>
+      <h3>後端，本處是用 Google Apps Script</h3>
+      <p>iframe Gist</p>
+      <hr/>
     </div>
     <script>
+      // Callback 的 function
       function onTelegramAuth(user) {
-        console.log("🚀 ~ user", user);
+        document.getElementById('code').innerHTML = JSON.stringify(user);
       }
     </script>
   </body>

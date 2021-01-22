@@ -1,2 +1,29 @@
 *, *::before, *::after {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
+
+:root {
+  --focus: #167FFF;
+  --links: #42A6F7;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #167FFF;
+  color: var(--focus);
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.js-append-links a {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.js-append-links a:hover {
+  color: #FFF !important;
+}

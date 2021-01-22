@@ -75,38 +75,27 @@
 		"rFN": 0,
 		"uCM": 0
 		},
-	"/src/main-min.js": {
-		"bF": 0,
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "/src/main-min-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
-		},
 	"/src/main.js": {
 		"bF": 0,
 		"ft": 64,
 		"ma": 0,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "/src/main-min.js",
-		"oF": 0,
-		"sC": 3,
-		"tS": 0
+		"oAP": "/dist/main.min.js",
+		"oF": 2,
+		"sC": 0,
+		"tS": 1
 		},
 	"/src/style.sass": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"ec": 1,
 		"ft": 2,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "/src/style.css",
-		"oF": 0,
+		"oAP": "/dist/style.min.css",
+		"oF": 2,
 		"oS": 0,
 		"sct": 0
 		}
