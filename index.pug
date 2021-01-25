@@ -1,5 +1,5 @@
-- var link = ''
-- var title = '文章標題'
+- var link = 'letswrite-telegram-login'
+- var title = 'Telegram Login Widget，製作用 Telegram 登入功能'
 - var description = '文章大綱'
 
 <!DOCTYPE html>
@@ -86,14 +86,19 @@ html(lang="zh-TW")
           |         data-request-access="write">&lt;/script>
       
       h3 後端，本處是用 Google Apps Script
-      p iframe Gist
 
       hr
 
-      //- script(async='' src='https://telegram.org/js/telegram-widget.js?14', data-telegram-login='lifetifulBot', data-size='large' data-radius='20', data-auth-url='https://script.google.com/macros/s/AKfycbzgFHWEpsh-NOujcaH1G1lIAKi4RgnZZrRZgJSOJHUX9oRqVwV4G9DA/exec', data-request-access='write')
-
     script.
       // Callback 的 function
+      // 這邊會送資料到 Let's Write 的 Firebase，clone 下來用時記得刪掉
       function onTelegramAuth(user) {
-        document.getElementById('code').innerHTML = JSON.stringify(user);
+        const data = JSON.stringify(user);
+        document.getElementById('code').innerHTML = data;
+        var requestOptions = {
+          method: 'POST',
+          redirect: 'follow'
+        };
+
+        fetch(`https://script.google.com/macros/s/AKfycbzgFHWEpsh-NOujcaH1G1lIAKi4RgnZZrRZgJSOJHUX9oRqVwV4G9DA/exec?auth_date=${user.auth_date}&first_name=${user.first_name}&last_name=${user.last_name}&hash=${user.hash}&id=${user.id}&photo_url=${user.photo_url}`, requestOptions);
       }

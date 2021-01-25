@@ -4,22 +4,22 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>文章標題 - Augustus - Let's Write</title>
-    <link rel="canonical" href="https://letswrite.tw//"/>
-    <meta property="og:url" content="https://letswritetw.github.io/letswrite-/"/>
+    <title>Telegram Login Widget，製作用 Telegram 登入功能 - Augustus - Let's Write</title>
+    <link rel="canonical" href="https://letswrite.tw/letswrite-telegram-login/"/>
+    <meta property="og:url" content="https://letswritetw.github.io/letswrite-letswrite-telegram-login/"/>
     <meta property="fb:app_id" content="2435108729902508"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="Let's Write"/>
-    <meta property="og:title" content="文章標題 - Augustus - Let's Write"/>
-    <meta itemprop="name" content="文章標題 - Augustus - Let's Write"/>
+    <meta property="og:title" content="Telegram Login Widget，製作用 Telegram 登入功能 - Augustus - Let's Write"/>
+    <meta itemprop="name" content="Telegram Login Widget，製作用 Telegram 登入功能 - Augustus - Let's Write"/>
     <meta name="description" content="文章大綱"/>
     <meta property="og:description" content="文章大綱"/>
     <meta itemprop="description" content="文章大綱"/>
-    <meta itemprop="image" content="https://letswritetw.github.io//fb.jpg"/>
-    <meta property="og:image" content="https://letswritetw.github.io//fb.jpg"/>
+    <meta itemprop="image" content="https://letswritetw.github.io/letswrite-telegram-login/fb.jpg"/>
+    <meta property="og:image" content="https://letswritetw.github.io/letswrite-telegram-login/fb.jpg"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
-    <meta property="og:image:alt" content="文章標題"/>
+    <meta property="og:image:alt" content="Telegram Login Widget，製作用 Telegram 登入功能"/>
     <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css"/>
     <link rel="stylesheet" href="dist/style.min.css"/>
@@ -59,13 +59,20 @@
         data-auth-url="要轉去哪個 URL 做後端處理"
         data-request-access="write">&lt;/script></code></pre>
       <h3>後端，本處是用 Google Apps Script</h3>
-      <p>iframe Gist</p>
       <hr/>
     </div>
     <script>
       // Callback 的 function
+      // 這邊會送資料到 Let's Write 的 Firebase，clone 下來用時記得刪掉
       function onTelegramAuth(user) {
-        document.getElementById('code').innerHTML = JSON.stringify(user);
+        const data = JSON.stringify(user);
+        document.getElementById('code').innerHTML = data;
+        var requestOptions = {
+          method: 'POST',
+          redirect: 'follow'
+        };
+      
+        fetch(`https://script.google.com/macros/s/AKfycbzgFHWEpsh-NOujcaH1G1lIAKi4RgnZZrRZgJSOJHUX9oRqVwV4G9DA/exec?auth_date=${user.auth_date}&first_name=${user.first_name}&last_name=${user.last_name}&hash=${user.hash}&id=${user.id}&photo_url=${user.photo_url}`, requestOptions);
       }
     </script>
   </body>
